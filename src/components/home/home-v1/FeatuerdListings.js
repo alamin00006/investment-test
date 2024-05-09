@@ -8,6 +8,7 @@ import "swiper/swiper-bundle.min.css";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import Slider from "react-rangeslider";
 import { useState } from "react";
+import { serverBaseUrl } from "@/dataFetching/BaseUrl";
 
 const FeaturedListings = ({ data }) => {
   const [value, setValue] = useState(50);
@@ -62,7 +63,7 @@ const FeaturedListings = ({ data }) => {
                       width={382}
                       height={248}
                       // className="w-100 h-100 cover"
-                      src={`http://localhost:5000/public/uploads/${doc.url}`}
+                      src={`${serverBaseUrl}/public/uploads/${doc.url}`}
                       alt="listings"
                     />
                   </div>
