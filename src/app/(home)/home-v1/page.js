@@ -18,12 +18,15 @@ import TrustedWorld from "@/components/home/home-v1/TrustedWorld";
 import ReturnCalculator from "@/components/home/home-v1/ReturnCalculator";
 import RealStateCombines from "@/components/home/home-v1/RealStateCombines";
 import StartBuying from "@/components/home/home-v1/StartBuying";
+import { getData } from "@/dataFetching/Property";
 
 export const metadata = {
   title: "Home v1 || Homez - Real Estate NextJS Template",
 };
 
-const Home_V1 = () => {
+const Home_V1 = async () => {
+  const data = await getData();
+
   return (
     <>
       {/* Main Header Nav */}
@@ -118,7 +121,7 @@ const Home_V1 = () => {
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up" data-aos-delay="200">
               <div className="feature-listing-slider">
-                <FeaturedListings />
+                <FeaturedListings data={data} />
               </div>
             </div>
           </div>
@@ -130,7 +133,7 @@ const Home_V1 = () => {
       <section className="pb40-md pb90">
         <div className="container investor_calculator">
           <h2 className="text-center mb-4">Return Calculator</h2>
-          <ReturnCalculator />
+          <ReturnCalculator data={data} />
         </div>
       </section>
       {/* End Explore property-city */}

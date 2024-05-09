@@ -8,10 +8,8 @@ import "swiper/swiper-bundle.min.css";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import Slider from "react-rangeslider";
 import { useState } from "react";
-import UseFetch from "@/hooks/useFetch";
 
-const FeaturedListings = () => {
-  const { data: property } = UseFetch(`property`);
+const FeaturedListings = ({ data }) => {
   const [value, setValue] = useState(50);
 
   const handleChangeStart = () => {
@@ -54,55 +52,46 @@ const FeaturedListings = () => {
           },
         }}
       >
-        {property.slice(0, 4).map((listing) => (
-          <SwiperSlide key={listing.id} className="item-range">
+        {data.map((project) => (
+          <SwiperSlide key={project._id} className="item-range">
             <div className="item">
               <div className="listing-style1">
-                {/* <div className="list-thumb">
-                  <Image
-                    width={382}
-                    height={248}
-                    className="w-100 h-100 cover"
-                    src={listing.image}
-                    alt="listings"
-                  />
-                </div> */}
-                {listing.documents?.map((doc) => (
-                  <div className="list-thumb">
+                {project.documents?.map((doc, index) => (
+                  <div className="list-thumb" key={index}>
                     <Image
                       width={382}
                       height={248}
-                      className="w-100 h-100 cover"
-                      src={`https://investment-server-om2a.onrender.com/public/uploads/${doc.url}`}
+                      // className="w-100 h-100 cover"
+                      src={`http://localhost:5000/public/uploads/${doc.url}`}
                       alt="listings"
                     />
                   </div>
                 ))}
                 <div className="list-content">
                   <h6 className="list-title fw-bold">
-                    <Link href={`/single-v1/${listing.id}`}>
-                      {listing.propertyTitle}
+                    <Link href={`/single-v1/${project.id}`}>
+                      {project.propertyTitle}
                     </Link>
                   </h6>
-                  <p className="list-text">{listing.address}</p>
+                  <p className="list-text">{project.address}</p>
                   <div className="list-meta d-flex align-items-center">
                     <a href="#">
-                      <span className="mr-2">
+                      {/* <span className="mr-2">
                         <HiOutlineBuildingOffice2 />
-                      </span>
+                      </span> */}
                       10 Floor
                     </a>
                     <a href="#">
-                      <span className="flaticon-bed" /> {listing?.totalBedRoom}{" "}
-                      bed
+                      {/* <span className="flaticon-bed" /> */}
+                      {project?.totalBedRoom} bed
                     </a>
                     <a href="#">
-                      <span className="flaticon-shower" />{" "}
-                      {listing?.totalBathRooms} bath
+                      {/* <span className="flaticon-shower" />{" "} */}
+                      {project?.totalBathRooms} bath
                     </a>
                     <a href="#">
-                      <span className="flaticon-expand" />{" "}
-                      {listing?.proertySize} sqft
+                      {/* <span className="flaticon-expand" />{" "} */}
+                      {project?.proertySize} sqft
                     </a>
                   </div>
                   <div className="d-flex justify-content-between mt-2 ">
@@ -172,7 +161,7 @@ const FeaturedListings = () => {
                     </p>
                   </div>
 
-                  <Link href={`/single-v1/${listing.id}`}>
+                  <Link href={`/single-v1/${project.id}`}>
                     <div
                       className="d-flex justify-content-center"
                       style={{

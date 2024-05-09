@@ -1,24 +1,81 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Slider from "react-rangeslider";
-const ReturnCalculator = () => {
+const ReturnCalculator = ({ data }) => {
   const [returnTypeValue, setReturnTypeValue] = useState(0);
+  const [returnRangeValue, setReturnRangeValue] = useState(1);
+  const [projectId, setProjectId] = useState("");
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [initialAmount, setInitialAmount] = useState(0);
+  const [profitAmount, setProfitAmount] = useState(0);
 
-  const returnType = ["One Time", "Monthly", "Yearly"];
-  const [value, setValue] = useState(50);
+  const [capitalAppreciation, setCapitalAppeciation] = useState(false);
 
-  const handleChangeStart = () => {
-    console.log("Change event started");
-  };
+  const returnType = ["Monthly", "Half Yearly", "Yearly"];
+  const investmentTypes = ["Investment", "Co-ownership"];
 
   const handleChange = (value) => {
-    setValue(value);
+    setReturnRangeValue(value);
   };
 
-  const handleChangeComplete = () => {
-    console.log("Change event completed");
-  };
+  // find Selected Project
+  useEffect(() => {
+    const findSelectedProject = data?.find(
+      (project) => project._id === projectId
+    );
+    setSelectedProject(findSelectedProject);
+  }, [projectId, data]);
+
+  useEffect(() => {
+    if (selectedProject) {
+      let profitAmount = 0;
+      if (returnTypeValue === 0) {
+        profitAmount =
+          (initialAmount * selectedProject?.monthlyReturnValue) / 100;
+      } else if (returnTypeValue === 1) {
+        profitAmount =
+          (initialAmount * selectedProject?.halfYearlyRetunrValue) / 100;
+      } else {
+        profitAmount =
+          (initialAmount * selectedProject?.yearlyReturnValue) / 100;
+      }
+      setProfitAmount(profitAmount * returnRangeValue);
+    } else {
+      let profitAmount = 0;
+      if (returnTypeValue === 0) {
+        profitAmount = (initialAmount * data?.[0]?.monthlyReturnValue) / 100;
+      } else if (returnTypeValue === 1) {
+        profitAmount = (initialAmount * data?.[0]?.halfYearlyRetunrValue) / 100;
+      } else {
+        profitAmount = (initialAmount * data?.[0]?.yearlyReturnValue) / 100;
+      }
+      setProfitAmount(profitAmount * returnRangeValue);
+    }
+    // If Capital Appreciation is true ? then This condition Applyed
+    if (capitalAppreciation) {
+      if (selectedProject) {
+        const appreciation =
+          Number(
+            initialAmount * selectedProject?.projectAnnualCapitalAppreciation
+          ) / 100;
+        setProfitAmount((prevAmount) => appreciation + prevAmount);
+      } else {
+        const appreciation =
+          Number(initialAmount * data?.[0]?.projectAnnualCapitalAppreciation) /
+          100;
+        setProfitAmount((prevAmount) => appreciation + prevAmount);
+      }
+    }
+  }, [
+    initialAmount,
+    projectId,
+    returnRangeValue,
+    returnTypeValue,
+    data,
+    selectedProject,
+    capitalAppreciation,
+  ]);
 
   return (
     <>
@@ -63,19 +120,22 @@ const ReturnCalculator = () => {
               </div>
             </div>
             <div>
-              <h6 className="mt-4 mb-3">Select Property</h6>
+              <h6 className="mt-4 mb-3">Select Project</h6>
               <select
                 style={{
                   width: "100%",
                   height: "40px",
                   borderRadius: "4px",
                 }}
+                onChange={(e) => {
+                  setProjectId(e.target.value);
+                }}
               >
-                <option>Villa Balima</option>
-                <option>Villa Balima</option>
-                <option>Villa Balima</option>
-                <option>Villa Balima</option>
-                <option>Villa Balima</option>
+                {data.map((project) => (
+                  <option value={project._id} key={project._id}>
+                    {project?.propertyTitle}
+                  </option>
+                ))}
               </select>
             </div>
             <div className=" d-flex justify-content-center ">
@@ -113,11 +173,12 @@ const ReturnCalculator = () => {
                   height: "40px",
                   borderRadius: "4px",
                 }}
+                onChange={(e) => setInitialAmount(e.target.value)}
                 placeholder="Multiple of BDT 10.000"
               />
             </div>
             <div className="mt-3">
-              <h6>Period (5 year)</h6>
+              <h6>Period ({returnRangeValue} year)</h6>
               <div
                 style={{
                   cursor: "pointer",
@@ -125,12 +186,10 @@ const ReturnCalculator = () => {
                 }}
               >
                 <Slider
-                  min={0}
-                  max={100}
-                  value={value}
-                  onChangeStart={handleChangeStart}
+                  min={1}
+                  max={10}
+                  value={returnRangeValue}
                   onChange={handleChange}
-                  onChangeComplete={handleChangeComplete}
                 />
               </div>
             </div>
@@ -148,7 +207,8 @@ const ReturnCalculator = () => {
                   </div>
 
                   <div>
-                    <label>Last Month</label>
+                    {/* <label>Last Month</label> */}
+                    <label>Expected Return</label>
                   </div>
                 </div>
                 <div className="d-flex gap-3 mt-2">
@@ -172,15 +232,44 @@ const ReturnCalculator = () => {
                     fontSize: "34px",
                   }}
                 >
-                  11%
+                  <span
+                    style={{
+                      fontSize: "14px",
+                    }}
+                  >
+                    Upto
+                  </span>
+                  {selectedProject
+                    ? returnTypeValue === 0
+                      ? selectedProject?.monthlyReturnValue
+                      : returnTypeValue === 1
+                      ? selectedProject?.halfYearlyRetunrValue
+                      : returnTypeValue === 2
+                      ? selectedProject?.yearlyReturnValue
+                      : ""
+                    : returnTypeValue === 0
+                    ? data?.[0]?.monthlyReturnValue
+                    : returnTypeValue === 1
+                    ? data?.[0]?.halfYearlyRetunrValue
+                    : returnTypeValue === 2
+                    ? data?.[0]?.yearlyReturnValue
+                    : ""}
+                  %
                 </p>
               </div>
             </div>
             <div className=" auto_purchase mt-3 d-flex justify-content-between">
               <div className="d-flex gap-3 justify-items-center ">
-                <input className="mt-1" type="checkbox" />
+                <input
+                  id="capital"
+                  className="mt-1"
+                  onClick={() => setCapitalAppeciation(!capitalAppreciation)}
+                  type="checkbox"
+                />
 
-                <label>Include Expected Capital Appreciation </label>
+                <label htmlFor="capital">
+                  Include Expected Capital Appreciation{" "}
+                </label>
 
                 <Image
                   width={18}
@@ -201,11 +290,14 @@ const ReturnCalculator = () => {
                     lineHeight: "15px",
                   }}
                 >
-                  2%
+                  {selectedProject
+                    ? selectedProject?.projectAnnualCapitalAppreciation
+                    : data?.[0]?.projectAnnualCapitalAppreciation}
+                  %
                 </p>
               </div>
             </div>
-            <div className=" auto_purchase mt-3 ">
+            {/* <div className=" auto_purchase mt-3 ">
               <div className="d-flex gap-3 justify-items-center ">
                 <input className="mt-1" type="checkbox" />
 
@@ -222,7 +314,7 @@ const ReturnCalculator = () => {
                   }}
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="col-lg-6 right_part">
@@ -243,7 +335,7 @@ const ReturnCalculator = () => {
                   padding: "10px 40px",
                 }}
               >
-                Projected income return in <b>5 years</b>
+                Projected income return in <b>{returnRangeValue} years</b>
               </h6>
               <p className="mt-4">Expected Income</p>
               <p
@@ -253,9 +345,9 @@ const ReturnCalculator = () => {
                   lineHeight: "15px",
                 }}
               >
-                BDT0
+                BDT{profitAmount?.toLocaleString()}
               </p>
-              <p>(0 Share)</p>
+              {/* <p>(0 Share)</p> */}
             </div>
           </div>
           <div
@@ -278,9 +370,8 @@ const ReturnCalculator = () => {
                   lineHeight: "15px",
                 }}
               >
-                BDT0
+                BDT{(Number(initialAmount) + profitAmount).toLocaleString()}
               </p>
-              <p>(0 Share)</p>
             </div>
           </div>
           <div
