@@ -1,1 +1,1 @@
-export const serverBaseUrl = "https://investment-server-om2a.onrender.com";
+export const serverBaseUrl = "http://localhost:5000/api";

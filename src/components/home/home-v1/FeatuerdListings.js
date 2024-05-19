@@ -8,11 +8,10 @@ import "swiper/swiper-bundle.min.css";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import Slider from "react-rangeslider";
 import { useState } from "react";
-import { serverBaseUrl } from "@/dataFetching/BaseUrl";
 
 const FeaturedListings = ({ data }) => {
   const [value, setValue] = useState(50);
-
+  console.log(data);
   const handleChangeStart = () => {
     console.log("Change event started");
   };
@@ -53,25 +52,24 @@ const FeaturedListings = ({ data }) => {
           },
         }}
       >
-        {data.map((project) => (
+        {data?.map((project) => (
           <SwiperSlide key={project._id} className="item-range">
             <div className="item">
               <div className="listing-style1">
-                {project.documents?.map((doc, index) => (
+                {project?.projectPicture?.map((pic, index) => (
                   <div className="list-thumb" key={index}>
                     <Image
                       width={382}
                       height={248}
-                      // className="w-100 h-100 cover"
-                      src={`${serverBaseUrl}/public/uploads/${doc.url}`}
-                      alt="listings"
+                      src={`http://localhost:5000/${pic}`}
+                      alt="Project Picture"
                     />
                   </div>
                 ))}
                 <div className="list-content">
                   <h6 className="list-title fw-bold">
-                    <Link href={`/single-v1/${project.id}`}>
-                      {project.propertyTitle}
+                    <Link href={`/single-v1/${project._id}`}>
+                      {project.projectTitle}
                     </Link>
                   </h6>
                   <p className="list-text">{project.address}</p>
@@ -162,7 +160,7 @@ const FeaturedListings = ({ data }) => {
                     </p>
                   </div>
 
-                  <Link href={`/single-v1/${project.id}`}>
+                  <Link href={`/single-v1/${project._id}`}>
                     <div
                       className="d-flex justify-content-center"
                       style={{

@@ -1,7 +1,7 @@
 import { serverBaseUrl } from "./BaseUrl";
 
 export const getData = async () => {
-  const res = await fetch(`${serverBaseUrl}/api/property`, {
+  const res = await fetch(`${serverBaseUrl}/project`, {
     next: {
       revalidate: 2,
     },

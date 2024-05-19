@@ -133,7 +133,7 @@ const ReturnCalculator = ({ data }) => {
               >
                 {data.map((project) => (
                   <option value={project._id} key={project._id}>
-                    {project?.propertyTitle}
+                    {project?.projectTitle}
                   </option>
                 ))}
               </select>
