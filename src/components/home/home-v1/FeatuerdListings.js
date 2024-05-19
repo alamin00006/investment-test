@@ -11,7 +11,7 @@ import { useState } from "react";
 
 const FeaturedListings = ({ data }) => {
   const [value, setValue] = useState(50);
-  console.log(data);
+
   const handleChangeStart = () => {
     console.log("Change event started");
   };
@@ -56,16 +56,15 @@ const FeaturedListings = ({ data }) => {
           <SwiperSlide key={project._id} className="item-range">
             <div className="item">
               <div className="listing-style1">
-                {project?.projectPicture?.map((pic, index) => (
-                  <div className="list-thumb" key={index}>
-                    <Image
-                      width={382}
-                      height={248}
-                      src={`http://localhost:5000/${pic}`}
-                      alt="Project Picture"
-                    />
-                  </div>
-                ))}
+                <div className="list-thumb">
+                  <Image
+                    width={382}
+                    height={248}
+                    src={`https://investment-server-a1qr.onrender.com/${project?.projectPicture[0]}`}
+                    alt="Project Picture"
+                  />
+                </div>
+
                 <div className="list-content">
                   <h6 className="list-title fw-bold">
                     <Link href={`/single-v1/${project._id}`}>
