@@ -23,7 +23,7 @@ const images = [
   },
 ];
 
-const PropertyGallery = ({ id }) => {
+const PropertyGallery = ({ id, photos }) => {
   const data = listings.filter((elm) => elm.id == id)[0] || listings[0];
   return (
     <>

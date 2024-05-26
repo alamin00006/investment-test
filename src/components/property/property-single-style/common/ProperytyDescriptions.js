@@ -1,9 +1,11 @@
 import React from "react";
-import PropertyAddress from "./PropertyAddress";
+import ProjectManageInfo from "./ProjectManageInfo";
 import AllReviews from "./reviews";
-import Test from "./Test";
 
-const ProperytyDescriptions = () => {
+import ProjectExitStrategy from "./ProjectExitStrategy";
+import ProjectLocationLink from "./ProjectLocationLink";
+
+const ProperytyDescriptions = ({ projectData }) => {
   return (
     <>
       <div className="col-md-12">
@@ -115,19 +117,23 @@ const ProperytyDescriptions = () => {
                 2028)
               </p>
 
-              <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30 mt30">Address</h4>
+              <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30  overflow-hidden position-relative">
+                <ProjectManageInfo projectData={projectData} />
+              </div>
+
+              <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30  overflow-hidden position-relative">
+                <h4 className="title fz17 ">Location: </h4>
                 <div className="row">
-                  <PropertyAddress />
+                  <ProjectLocationLink projectData={projectData} />
                 </div>
               </div>
 
-              <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <div className="row">
-                  {/* <AllComments /> */}
+          
                   <AllReviews />
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div
@@ -146,13 +152,13 @@ const ProperytyDescriptions = () => {
                   <h6>BDT</h6>
                 </div>
                 <div className="col-lg-4">
-                  <h6>6,924510,000</h6>
+                  <h6>30,000000</h6>
                 </div>
               </div>
               <hr />
               <div className="row">
                 <div className="col-lg-4">
-                  <h6>Underlying asset price :</h6>
+                  <h6>Asset price :</h6>
                 </div>
                 <div className="col-lg-4">
                   <h6>BDT</h6>
@@ -185,7 +191,7 @@ const ProperytyDescriptions = () => {
                   <h6>6,924510,000</h6>
                 </div>
               </div>
-              <h5>Annual Return</h5>
+              <h5 className="mt-4">Annual Return</h5>
               <hr />
               <div className="row">
                 <div className="col-lg-7">
@@ -259,9 +265,7 @@ const ProperytyDescriptions = () => {
               id="nav-item5"
               role="tabpanel"
               aria-labelledby="nav-item5-tab"
-            >
-              <Test />
-            </div>
+            ></div>
           </div>
         </div>
       </div>

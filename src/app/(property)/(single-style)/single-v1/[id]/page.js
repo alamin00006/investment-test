@@ -7,7 +7,7 @@ import NearbySimilarProperty from "@/components/property/property-single-style/c
 
 import PropertyHeader from "@/components/property/property-single-style/common/PropertyHeader";
 
-import PropertyViews from "@/components/property/property-single-style/common/property-view";
+import ProjectMonthlyReturnChart from "@/components/property/property-single-style/common/projectMonthlyReturnChart/ProjectMonthlyReturnChart";
 import ProperytyDescriptions from "@/components/property/property-single-style/common/ProperytyDescriptions";
 
 import PropertyGallery from "@/components/property/property-single-style/single-v1/PropertyGallery";
@@ -15,6 +15,8 @@ import React from "react";
 
 import DetailsRightSide from "@/components/property/property-single-style/sidebar/DetailsRightSide";
 import { serverBaseUrl } from "@/dataFetching/BaseUrl";
+import FeaturedListings from "@/components/home/home-v1/FeatuerdListings";
+import { getData } from "@/dataFetching/Property";
 
 export const metadata = {
   title: "Property Single V1 || Homez - Real Estate NextJS Template",
@@ -23,11 +25,11 @@ export const metadata = {
 const SingleV1 = async ({ params }) => {
   const res = await fetch(`${serverBaseUrl}/project/${params.id}`, {
     cache: "no-store",
-    next: {
-      revalidate: 2,
-    },
   });
   const data = await res.json();
+  const projectData = data?.data;
+
+  const projecAllData = await getData();
 
   return (
     <>
@@ -45,25 +47,28 @@ const SingleV1 = async ({ params }) => {
           {/* End .row */}
 
           <div className="row mb30 mt30">
-            <PropertyGallery id={params.id} />
+            <PropertyGallery
+              id={params.id}
+              photos={projectData?.projectPicture}
+            />
           </div>
           {/* End .row */}
 
           <div className="row">
-            <PropertyHeader id={params.id} />
+            <PropertyHeader id={params.id} projectData={projectData} />
           </div>
 
-          <div className="row wrap">
+          <div className="row wrap mt-3">
             <div className="col-lg-8">
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
                 <div className="row">
-                  <PropertyViews />
+                  <ProjectMonthlyReturnChart />
                 </div>
               </div>
               {/* End .ps-widget */}
 
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <ProperytyDescriptions />
+                <ProperytyDescriptions projectData={projectData} />
 
                 {/* End property description */}
               </div>
@@ -99,40 +104,14 @@ const SingleV1 = async ({ params }) => {
           </div>
           {/* End .row */}
 
-          <div className="row mt30 align-items-center justify-content-between">
+          <div className="row align-items-center justify-content-between">
             <div className="col-auto">
-              <div className="main-title">
-                <h2 className="title">Discover Our Featured Listings</h2>
-                <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
-                </p>
+              <div className="mb-4">
+                <h3 className="">Discover Our Other Projects</h3>
               </div>
             </div>
             {/* End header */}
 
-            <div className="col-auto mb30">
-              <div className="row align-items-center justify-content-center">
-                <div className="col-auto">
-                  <button className="featured-prev__active swiper_button">
-                    <i className="far fa-arrow-left-long" />
-                  </button>
-                </div>
-                {/* End prev */}
-
-                <div className="col-auto">
-                  <div className="pagination swiper--pagination featured-pagination__active" />
-                </div>
-                {/* End pagination */}
-
-                <div className="col-auto">
-                  <button className="featured-next__active swiper_button">
-                    <i className="far fa-arrow-right-long" />
-                  </button>
-                </div>
-                {/* End Next */}
-              </div>
-              {/* End .col for navigation and pagination */}
-            </div>
             {/* End .col for navigation and pagination */}
           </div>
           {/* End .row */}
@@ -140,7 +119,7 @@ const SingleV1 = async ({ params }) => {
           <div className="row">
             <div className="col-lg-12">
               <div className="property-city-slider">
-                <NearbySimilarProperty />
+                <FeaturedListings data={projecAllData?.data} />
               </div>
             </div>
           </div>
