@@ -1,80 +1,83 @@
+"use client";
+import { Toaster } from "react-hot-toast";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-const LoginSignupModal = () => {
+import Modal from "react-bootstrap/Modal";
+import { useState } from "react";
+const LoginSignupModal = ({ setIsModalOpen, isModalOpen }) => {
+  const handleClose = () => setIsModalOpen(false);
+  const [singIn, setSignIn] = useState(true);
+
   return (
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalToggleLabel">
-          Welcome to Realton
-        </h5>
-        <button
-          type="button"
-          className="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        />
-      </div>
-      {/* End header */}
+    <>
+      <Modal
+        show={isModalOpen}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title> Welcome to Sharikan</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="log-reg-form">
+            <div className="">
+              <nav>
+                <div className="mb20 d-flex gap-2">
+                  <button
+                    className="nav-link active fw600"
+                    onClick={() => setSignIn(true)}
+                    style={{
+                      border: "1px solid #00C194",
+                      backgroundColor: singIn ? "#00C194" : "transparent",
+                      color: singIn ? "white" : "black",
+                      fontSize: "1rem",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    className="nav-link fw600"
+                    style={{
+                      border: "1px solid #00C194",
+                      backgroundColor: !singIn ? "#00C194" : "transparent",
+                      color: !singIn ? "white" : "black",
+                      fontSize: "1rem",
+                      borderRadius: "5px",
+                    }}
+                    onClick={() => setSignIn(false)}
+                  >
+                    New Account
+                  </button>
+                </div>
+              </nav>
+              {/* End nav tab items */}
 
-      <div className="modal-body">
-        <div className="log-reg-form">
-          <div className="navtab-style2">
-            <nav>
-              <div className="nav nav-tabs mb20" id="nav-tab" role="tablist">
-                <button
-                  className="nav-link active fw600"
-                  id="nav-home-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#nav-home"
-                  type="button"
-                  role="tab"
-                  aria-controls="nav-home"
-                  aria-selected="true"
-                >
-                  Sign In
-                </button>
-                <button
-                  className="nav-link fw600"
-                  id="nav-profile-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#nav-profile"
-                  type="button"
-                  role="tab"
-                  aria-controls="nav-profile"
-                  aria-selected="false"
-                >
-                  New Account
-                </button>
-              </div>
-            </nav>
-            {/* End nav tab items */}
+              <div>
+                {singIn ? (
+                  <SignIn
+                    setSignIn={setSignIn}
+                    setIsModalOpen={setIsModalOpen}
+                  />
+                ) : (
+                  <SignUp setSignIn={setSignIn} />
+                )}
 
-            <div className="tab-content" id="nav-tabContent2">
-              <div
-                className="tab-pane fade show active fz15"
-                id="nav-home"
-                role="tabpanel"
-                aria-labelledby="nav-home-tab"
-              >
-                <SignIn />
-              </div>
-              {/* End signin content */}
+                {/* End signin content */}
 
-              <div
-                className="tab-pane fade fz15"
-                id="nav-profile"
-                role="tabpanel"
-                aria-labelledby="nav-profile-tab"
-              >
-                <SignUp />
+                {/* End signup content */}
               </div>
-              {/* End signup content */}
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </Modal.Body>
+
+        <Toaster position="top-center" reverseOrder={false} />
+      </Modal>
+
+      {/* End header */}
+    </>
   );
 };
 

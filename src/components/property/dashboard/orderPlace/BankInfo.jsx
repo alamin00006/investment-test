@@ -11,7 +11,7 @@ const BankInfo = () => {
     >
       <h2>Bank Information</h2>
 
-      <div
+      {/* <div
         className="d-flex gap-5 mt-5"
         style={{
           border: "1px solid #00A47E",
@@ -32,6 +32,28 @@ const BankInfo = () => {
                 <FaRegCopy />
               </span>
             </h5>
+            <p>Account Holder Name</p>
+            <h5 style={{ marginTop: "-7px" }}>Sumona Sharmin</h5>
+            <p>Account Type</p>
+            <h5 style={{ marginTop: "-7px" }}>Savings</h5>
+            <p>Account Number</p>
+            <h5 style={{ marginTop: "-7px" }}>10565656100001</h5>
+            <p>Branch Name</p>
+            <h5 style={{ marginTop: "-7px" }}>SATMASJID ROAD</h5>
+          </div>
+        </div>
+        <div className="w-50 mb-4 px-3">
+          <div className="border p-3 rounded">
+            <p>Bank Name</p>
+            <h5 style={{ marginTop: "-7px" }}>THE CITY BANK PLC</h5>
+            <p>Account Holder Name</p>
+            <h5 style={{ marginTop: "-7px" }}>Sumona Sharmin</h5>
+            <p>Account Type</p>
+            <h5 style={{ marginTop: "-7px" }}>Savings</h5>
+            <p>Account Number</p>
+            <h5 style={{ marginTop: "-7px" }}>10565656100001</h5>
+            <p>Branch Name</p>
+            <h5 style={{ marginTop: "-7px" }}>SATMASJID ROAD</h5>
           </div>
           <div className="mt-4">
             <p>Account Holder Name</p>
@@ -90,7 +112,7 @@ const BankInfo = () => {
             </h5>
           </div>
         </div>
-      </div>
+      </div> */}
       <div
         className="d-flex gap-5 mt-4"
         style={{

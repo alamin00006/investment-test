@@ -26,14 +26,14 @@ const Footer = () => {
         <div className="col-sm-6">
           <div className="text-center text-lg-start">
             <p className="copyright-text text-gray ff-heading">
-              © Homez {getCurrentYear()}{" "}
+              © Rtemis {getCurrentYear()}{" "}
               <a
                 href="https://themeforest.net/user/ib-themes"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white"
               >
-                ib-themes
+                Ltd
               </a>{" "}
               - All rights reserved
             </p>

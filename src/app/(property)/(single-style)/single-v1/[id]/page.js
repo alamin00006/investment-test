@@ -1,9 +1,6 @@
-// "use client";
 import DefaultHeader from "@/components/common/DefaultHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
-
-import NearbySimilarProperty from "@/components/property/property-single-style/common/NearbySimilarProperty";
 
 import PropertyHeader from "@/components/property/property-single-style/common/PropertyHeader";
 
@@ -11,12 +8,12 @@ import ProjectMonthlyReturnChart from "@/components/property/property-single-sty
 import ProperytyDescriptions from "@/components/property/property-single-style/common/ProperytyDescriptions";
 
 import PropertyGallery from "@/components/property/property-single-style/single-v1/PropertyGallery";
-import React from "react";
 
-import DetailsRightSide from "@/components/property/property-single-style/sidebar/DetailsRightSide";
-import { serverBaseUrl } from "@/dataFetching/BaseUrl";
+import { serverBaseUrl } from "@/serverAPI/BaseUrl";
 import FeaturedListings from "@/components/home/home-v1/FeatuerdListings";
-import { getData } from "@/dataFetching/Property";
+import { getData } from "@/serverAPI/Property";
+import DetailsRightSide from "@/components/property/property-single-style/common/DetailsRightSide";
+import DashboardHeader from "@/components/common/DashboardHeader";
 
 export const metadata = {
   title: "Property Single V1 || Homez - Real Estate NextJS Template",
@@ -34,7 +31,7 @@ const SingleV1 = async ({ params }) => {
   return (
     <>
       {/* Main Header Nav */}
-      <DefaultHeader />
+      <DashboardHeader />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -84,19 +81,22 @@ const SingleV1 = async ({ params }) => {
                   }}
                 >
                   <div className="row p-2">
-                    <meter value={62} max={100} />
+                    <meter value={50000} max={projectData?.totalProjectValue} />
 
                     <div className="col-lg-4">
-                      <span className="fs-5 text-thm">62%</span>
+                      <span className="fs-5 text-thm">50%</span>
                     </div>
                     <div className="col-lg-8 text-end">
                       {" "}
-                      <span>258093/692451 tokens left</span>
+                      <span>
+                        {projectData?.totalProjectValue?.toLocaleString()}
+                        /10000 Amount left
+                      </span>
                     </div>
                   </div>
                 </div>
                 <div className="default-box-shadow1 bdrs12  p30 mb30-md bgc-white position-relative">
-                  <DetailsRightSide />
+                  <DetailsRightSide projectData={projectData} />
                 </div>
                 {/* End .Schedule a tour */}
               </div>

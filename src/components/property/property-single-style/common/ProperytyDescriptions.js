@@ -1,11 +1,25 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import ProjectManageInfo from "./ProjectManageInfo";
-import AllReviews from "./reviews";
 
-import ProjectExitStrategy from "./ProjectExitStrategy";
 import ProjectLocationLink from "./ProjectLocationLink";
 
 const ProperytyDescriptions = ({ projectData }) => {
+  const [notaryFee, setNotaryFee] = useState(null);
+  const [sharikanaFee, setSharikanaFee] = useState(null);
+
+  useEffect(() => {
+    // Find Notary fee
+    const assetValue = projectData?.projectAssetValue;
+    const notaryFee = (assetValue * projectData?.notaryFee) / 100;
+    setNotaryFee(notaryFee);
+
+    // Find Sharikana Fee
+
+    const sharikanaFee = (assetValue * projectData?.sharikanaFee) / 100;
+    setSharikanaFee(sharikanaFee);
+  }, [projectData?.projectAssetValue]);
+
   return (
     <>
       <div className="col-md-12">
@@ -88,33 +102,7 @@ const ProperytyDescriptions = ({ projectData }) => {
                 of living space with 500 sqm of private jungle. The enclosed &
                 fully air-conditioned living area is light-flooded with large
                 glass panel windows and sliding doors and offers adjacent dining
-                to a fully equipped western kitchen. All 4 bedrooms enjoy a
-                spacious layout with inbuilt wardrobes and private en-suite
-                bathrooms. The highlight is a 16-meter-long infinity swimming
-                pool with a sunken poolside lounge and terrace with sun
-                loungers. Villa The Kayu was completed in April 2023. The villa
-                is built on 1,500 sqm of land with a leasehold that expires on
-                the 1st of May 2053 (~30 years). This new modern 4-bedroom villa
-                is conveniently located in a quiet residential area, centrally
-                located north of Ubud palace, which is only a short 5 minute
-                drive away from Ubud’s cultural centre and many cafes and
-                restaurants are nearby. This property is set on 1,500 sqm of
-                land and offers 1,000 sqm of living space with 500 sqm of
-                private jungle. The enclosed & fully air-conditioned living area
-                is light-flooded with large glass panel windows and sliding
-                doors and offers adjacent dining to a fully equipped western
-                kitchen. All 4 bedrooms enjoy a spacious layout with inbuilt
-                wardrobes and private en-suite bathrooms. The highlight is a
-                16-meter-long infinity swimming pool with a sunken poolside
-                lounge and terrace with sun loungers. This villa is a
-                commercially viable property with amenities and design features
-                that maximize rental yields while also possessing the
-                functionality and comforts of a home. It is perfectly suitable
-                for short-term rentals and people looking for longer-term stays.
-                Management: To optimize the returns, a professional management
-                company has been appointed to manage the villa. Exit strategy:
-                The villa will be sold once the leasehold reaches 25 years (May
-                2028)
+                to a fully equipped western kitchen.
               </p>
 
               <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30  overflow-hidden position-relative">
@@ -127,13 +115,6 @@ const ProperytyDescriptions = ({ projectData }) => {
                   <ProjectLocationLink projectData={projectData} />
                 </div>
               </div>
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <div className="row">
-          
-                  <AllReviews />
-                </div>
-              </div> */}
             </div>
 
             <div
@@ -152,7 +133,7 @@ const ProperytyDescriptions = ({ projectData }) => {
                   <h6>BDT</h6>
                 </div>
                 <div className="col-lg-4">
-                  <h6>30,000000</h6>
+                  <h6>{projectData?.totalProjectValue?.toLocaleString()}</h6>
                 </div>
               </div>
               <hr />
@@ -164,31 +145,31 @@ const ProperytyDescriptions = ({ projectData }) => {
                   <h6>BDT</h6>
                 </div>
                 <div className="col-lg-4">
-                  <h6>6,924510,000</h6>
+                  <h6>{projectData?.projectAssetValue?.toLocaleString()}</h6>
                 </div>
               </div>
               <hr />
               <div className="row">
                 <div className="col-lg-4">
-                  <h6>Notary fee (0.75%) :</h6>
+                  <h6>Notary fee ({projectData?.notaryFee})% :</h6>
                 </div>
                 <div className="col-lg-4">
                   <h6>BDT</h6>
                 </div>
                 <div className="col-lg-4">
-                  <h6>6,924510,000</h6>
+                  <h6>{notaryFee?.toLocaleString()}</h6>
                 </div>
               </div>
               <hr />
               <div className="row">
                 <div className="col-lg-4">
-                  <h6>Rtemis fee (5%):</h6>
+                  <h6>Sharikana fee ({projectData?.sharikanaFee})%:</h6>
                 </div>
                 <div className="col-lg-4">
                   <h6>BDT</h6>
                 </div>
                 <div className="col-lg-4">
-                  <h6>6,924510,000</h6>
+                  <h6>{sharikanaFee?.toLocaleString()}</h6>
                 </div>
               </div>
               <h5 className="mt-4">Annual Return</h5>
@@ -198,7 +179,11 @@ const ProperytyDescriptions = ({ projectData }) => {
                   <h6>Total annual return :</h6>
                 </div>
                 <div className="col-lg-5">
-                  <h6>13%</h6>
+                  <h6>
+                    {projectData?.yearlyReturnValueMinimum +
+                      projectData?.projectAnnualCapitalAppreciation}
+                    %
+                  </h6>
                 </div>
               </div>
               <hr />
@@ -207,7 +192,7 @@ const ProperytyDescriptions = ({ projectData }) => {
                   <h6>Project annual rental yield :</h6>
                 </div>
                 <div className="col-lg-5">
-                  <h6>11%</h6>
+                  <h6>{projectData?.yearlyReturnValueMinimum}%</h6>
                 </div>
               </div>
               <hr />
@@ -216,7 +201,7 @@ const ProperytyDescriptions = ({ projectData }) => {
                   <h6>Project annual capital appreciation :</h6>
                 </div>
                 <div className="col-lg-5">
-                  <h6>2%</h6>
+                  <h6>{projectData?.projectAnnualCapitalAppreciation}%</h6>
                 </div>
               </div>
               <hr />

@@ -8,9 +8,11 @@ import "swiper/swiper-bundle.min.css";
 
 import Slider from "react-rangeslider";
 import { useState } from "react";
+import useUser from "@/hooks/useUser";
 
 const FeaturedListings = ({ data }) => {
   const [value, setValue] = useState(50);
+  const { user, error, loading } = useUser();
 
   const handleChangeStart = () => {
     console.log("Change event started");

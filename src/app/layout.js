@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`body  ${poppins.variable} ${dmSans.variable}`}
+        className={`body  ${poppins.variable} ${dmSans.variable} `}
         cz-shortcut-listen="false"
       >
         <div className="wrapper ovh">{children}</div>

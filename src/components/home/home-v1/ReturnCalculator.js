@@ -12,7 +12,7 @@ const ReturnCalculator = ({ data }) => {
 
   const [capitalAppreciation, setCapitalAppeciation] = useState(false);
 
-  const returnType = ["Monthly", "Half Yearly", "Yearly"];
+  const returnType = ["Half Yearly", "Yearly"];
   const investmentTypes = ["Investment", "Co-ownership"];
 
   const handleChange = (value) => {
@@ -32,23 +32,20 @@ const ReturnCalculator = ({ data }) => {
       let profitAmount = 0;
       if (returnTypeValue === 0) {
         profitAmount =
-          (initialAmount * selectedProject?.monthlyReturnValue) / 100;
-      } else if (returnTypeValue === 1) {
-        profitAmount =
-          (initialAmount * selectedProject?.halfYearlyRetunrValue) / 100;
+          (initialAmount * selectedProject?.halfYearlyRetunrValueMinimum) / 100;
       } else {
         profitAmount =
-          (initialAmount * selectedProject?.yearlyReturnValue) / 100;
+          (initialAmount * selectedProject?.yearlyReturnValueMinimum) / 100;
       }
       setProfitAmount(profitAmount * returnRangeValue);
     } else {
       let profitAmount = 0;
       if (returnTypeValue === 0) {
-        profitAmount = (initialAmount * data?.[0]?.monthlyReturnValue) / 100;
-      } else if (returnTypeValue === 1) {
-        profitAmount = (initialAmount * data?.[0]?.halfYearlyRetunrValue) / 100;
+        profitAmount =
+          (initialAmount * data?.[0]?.halfYearlyRetunrValueMinimum) / 100;
       } else {
-        profitAmount = (initialAmount * data?.[0]?.yearlyReturnValue) / 100;
+        profitAmount =
+          (initialAmount * data?.[0]?.yearlyReturnValueMinimum) / 100;
       }
       setProfitAmount(profitAmount * returnRangeValue);
     }
@@ -241,18 +238,14 @@ const ReturnCalculator = ({ data }) => {
                   </span>
                   {selectedProject
                     ? returnTypeValue === 0
-                      ? selectedProject?.monthlyReturnValue
+                      ? selectedProject?.halfYearlyRetunrValueMaximum
                       : returnTypeValue === 1
-                      ? selectedProject?.halfYearlyRetunrValue
-                      : returnTypeValue === 2
-                      ? selectedProject?.yearlyReturnValue
+                      ? selectedProject?.yearlyReturnValueMaximum
                       : ""
                     : returnTypeValue === 0
-                    ? data?.[0]?.monthlyReturnValue
+                    ? data?.[0]?.halfYearlyRetunrValueMaximum
                     : returnTypeValue === 1
-                    ? data?.[0]?.halfYearlyRetunrValue
-                    : returnTypeValue === 2
-                    ? data?.[0]?.yearlyReturnValue
+                    ? data?.[0]?.yearlyReturnValueMaximum
                     : ""}
                   %
                 </p>

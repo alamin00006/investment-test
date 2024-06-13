@@ -5,6 +5,7 @@ const UseFetch = (path) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  console.log(error);
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);

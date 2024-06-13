@@ -129,6 +129,11 @@ const SidebarDashboard = () => {
           ),
           text: "Logout",
         },
+        // {
+        //   href: "/pagination",
+
+        //   text: "pagination",
+        // },
       ],
     },
   ];
@@ -140,7 +145,7 @@ const SidebarDashboard = () => {
         backgroundColor: "#E7F6F6",
       }}
     >
-      <div className="dashboard_sidebar_list">
+      <div className="dashboard_sidebar_list ">
         {sidebarItems.map((section, sectionIndex) => (
           <div key={sectionIndex}>
             <p
@@ -151,7 +156,7 @@ const SidebarDashboard = () => {
               {section.title}
             </p>
             {section.items.map((item, itemIndex) => (
-              <div key={itemIndex} className="sidebar_list_item">
+              <div key={itemIndex} className="sidebar_list_item ">
                 <Link
                   href={item.href}
                   className={`items-center   ${

@@ -1,24 +1,20 @@
 import Explore from "@/components/common/Explore";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
-
 import CustomerReviews from "@/components/home/home-v1/CustomerReviews";
-import CallToActions from "@/components/common/CallToActions";
 import FeaturedListings from "@/components/home/home-v1/FeatuerdListings";
 import Header from "@/components/home/home-v1/Header";
-import Partner from "@/components/common/Partner";
-import PopularListings from "@/components/home/home-v1/PopularListings";
-import PropertiesByCities from "@/components/home/home-v1/PropertiesByCities";
+
 import Benifits from "@/components/home/home-v1/Benifits";
 import Hero from "@/components/home/home-v1/hero";
 import Image from "next/image";
 import HolderBenifits from "@/components/common/HolderBenifits";
 import Link from "next/link";
-import TrustedWorld from "@/components/home/home-v1/TrustedWorld";
+
 import ReturnCalculator from "@/components/home/home-v1/ReturnCalculator";
 import RealStateCombines from "@/components/home/home-v1/RealStateCombines";
 import StartBuying from "@/components/home/home-v1/StartBuying";
-import { getData } from "@/dataFetching/Property";
+import { getData } from "@/serverAPI/Property";
 
 export const metadata = {
   title: "Home v1 || Homez - Real Estate NextJS Template",
@@ -101,16 +97,16 @@ const Home_V1 = async () => {
           <div className="row align-items-center" data-aos="fade-up">
             <div className="col-lg-9">
               <div className="main-title2">
-                <h2 className="title">Featured Properties</h2>
+                <h2 className="title">Featured Projects</h2>
                 <p className="paragraph">
-                  We only select properties with the highest income potential
+                  We only select projects with the highest income potential
                 </p>
               </div>
             </div>
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-3">
                 <Link className="ud-btn2" href="/grid-full-3-col">
-                  See All Properties
+                  See All Projects
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>
@@ -136,41 +132,7 @@ const Home_V1 = async () => {
           <ReturnCalculator data={data?.data} />
         </div>
       </section>
-      {/* End Explore property-city */}
 
-      {/* Our Partners */}
-      <section
-        className="our-partners pt0"
-        style={{ backgroundColor: " #F7F7F7" }}
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12" data-aos="fade-up">
-              <div className="main-title text-center">
-                <h2
-                  style={{
-                    fontSize: "35px",
-                    color: "#00C194",
-                    textAlign: "center",
-                    paddingTop: "30px",
-                  }}
-                >
-                  Trusted by the world’s best
-                </h2>
-              </div>
-            </div>
-            <div className="col-lg-12 text-center">
-              <div
-                className="dots_none nav_none"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <Partner />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       {/* End Our Partners */}
 
       {/* Our Testimonials */}
@@ -184,7 +146,7 @@ const Home_V1 = async () => {
                 data-aos-delay="300"
               >
                 <h2 className="title">
-                  We are on a mission to democratize property ownership.
+                  We are on a mission to democratize projects ownership.
                 </h2>
                 <p className="paragraph">
                   90% of the worlds millionaires made their fortunes through

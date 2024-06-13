@@ -25,7 +25,7 @@ const Compare = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title text-white">Compare Properties</h2>
+                <h2 className="title text-white">Compare Projects</h2>
                 <div className="breadcumb-list">
                   <a className="text-white" href="#">
                     Home

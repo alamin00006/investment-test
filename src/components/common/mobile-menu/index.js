@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import ContactInfo from "./ContactInfo";
 import Social from "./Social";
-import ProSidebarContent from "./ProSidebarContent";
 
 const MobileMenu = () => {
   return (
@@ -65,7 +64,6 @@ const MobileMenu = () => {
 
           <div className="hsidebar-content ">
             <div className="hiddenbar_navbar_content">
-              <ProSidebarContent />
               {/* End .hiddenbar_navbar_menu */}
 
               <div className="hiddenbar_footer position-relative bdrt1">

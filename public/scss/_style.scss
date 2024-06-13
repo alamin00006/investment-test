@@ -9,53 +9,6 @@
 @import url(../css/menu.css);
 @import url(../css/ud-custom-spacing.css);
 
-/* == Table Of Content  == */
-/* Variables */
-/* Mixins */
-/* Typography Styles */
-/* Header Styles */
-/* All Type Of Footer Styles */
-/* All styles about breadcumb */
-/* Dashboard Style Code Here */
-/* Messages Styles */
-/* Listings Styles */
-/* About Pages Design Content Styles  */
-/* Hero Styles All Type Of */
-/* ALl Blogs Styles Here  */
-/* Brands */
-/* Commons Styles of Template */
-/* Contact Styles */
-/* All CTA Styles Here */
-/* Error Pages Styles */
-/* Iconbox Styles */
-/* All Type Of Forms Styles */
-/* Gallery Styles */
-/* Packages And Pricing Tables */
-/* Testimonials Styles */
-/* Team Styles */
-/* Different Styles Of Animations */
-/* Different Accordion Styles*/
-/* Different Styles of Alart */
-/* blockquote Styles*/
-/* All kind Of btns Styles */
-/* Funfact Styles */
-/* Menu Style */
-/* Nav & Tabs Styles */
-/* Paginations Styles */
-/* ProgressBar Styles */
-/* Social Styles */
-/* Sliders Styles */
-/* Sidebar Styles */
-/* Table Styles */
-/* Essential utility classes */
-/*=================================
-   Bootstrap Sass
-==================================*/
-
-/*=================================
-   Theme Based
-==================================*/
-/* Variables */
 :root {
   --icon-font-family: "Font Awesome 6 Pro";
   --icon-font-family2: "Flaticon";
@@ -605,6 +558,7 @@ li {
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  width: 250px;
 }
 
 .dashboard_sidebar_list .sidebar_list_item a i {
@@ -616,18 +570,7 @@ li {
   display: -ms-flexbox;
   display: flex;
 }
-.dashboard.dsh_board_sidebar_hidden .dashboard__sidebar {
-  -webkit-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
-  transform: translateX(-100%);
-}
-@media (max-width: 991.98px) {
-  .dashboard.dsh_board_sidebar_hidden .dashboard__sidebar {
-    -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
+
 .dashboard.dsh_board_sidebar_hidden .dashboard__main {
   padding-left: 0;
 }
@@ -648,20 +591,7 @@ li {
     transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 }
-.dashboard .dashboard__sidebar {
-  will-change: transform;
-  -webkit-transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-  -o-transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-  z-index: 9;
-}
-@media (max-width: 991.98px) {
-  .dashboard .dashboard__sidebar {
-    -webkit-transform: translateX(-100%);
-    -ms-transform: translateX(-100%);
-    transform: translateX(-100%);
-  }
-}
+
 .dashboard .dashboard__main {
   will-change: padding-left;
   -webkit-transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -670,26 +600,8 @@ li {
 }
 
 .dashboard__sidebar {
-  background-color: #ffffff;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
   height: calc(100% - 87px);
-  left: 0;
-  margin-top: 87px;
-  overflow-y: scroll;
-  padding: 30px;
-  padding-top: 60px;
-  padding-bottom: 40px;
-  position: fixed;
-  width: 300px;
-}
-.dashboard__sidebar::-webkit-scrollbar {
-  height: 4px;
-  width: 4px;
-}
-.dashboard__sidebar::-webkit-scrollbar-thumb {
-  background-color: rgba(33, 37, 41, 0.3);
-  border-radius: 12px;
+  margin-top: 100px;
 }
 
 .dashboard .dashboard__main {
@@ -6620,6 +6532,7 @@ textarea:focus {
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  color: white;
 }
 .ud-btn i {
   margin-left: 10px;
@@ -10306,70 +10219,6 @@ input:focus-visible {
   height: 250px;
 }
 
-.wa {
-  width: auto;
-}
-
-.w100 {
-  width: 100%;
-}
-
-.maxw100 {
-  max-width: 100%;
-}
-
-.maxw140 {
-  max-width: 140px;
-}
-
-.maxw1600 {
-  max-width: 1600px !important;
-}
-
-.maxw1800 {
-  max-width: 1800px !important;
-}
-
-.maxw1850 {
-  max-width: 1850px !important;
-}
-
-.fw300 {
-  font-weight: 300;
-}
-
-.fw400 {
-  font-weight: 400;
-}
-
-.fw500 {
-  font-weight: 500;
-}
-
-.fw600 {
-  font-weight: 600;
-}
-
-.fw700 {
-  font-weight: 700;
-}
-
-.fw800 {
-  font-weight: 800;
-}
-
-.fw900 {
-  font-weight: 900;
-}
-
-.fwn {
-  font-weight: normal;
-}
-
-.fwb {
-  font-weight: bold;
-}
-
 .db {
   display: block;
 }
@@ -10482,39 +10331,6 @@ input:focus-visible {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.gray-bdrb1 {
-  border-bottom: 1px solid #ecedf2;
-}
-
-.gray-bdrt1 {
-  border-top: 1px solid #ecedf2;
-}
-
-.bdrs0 {
-  border-radius: 0;
-}
-
-.bdrs6 {
-  border-radius: 6px;
-}
-
-.bdrs12 {
-  border-radius: 12px;
-}
-
-.bdrs24 {
-  border-radius: 24px;
-}
-
-.bdrs60 {
-  border-radius: 60px;
-}
-
-.bdrs12-right-y {
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-}
-
 .before-none:before {
   display: none;
 }
@@ -10535,36 +10351,6 @@ input:focus-visible {
   color: var(--headings-color);
   font-family: var(--title-font-family);
   font-weight: 400;
-}
-
-.default-box-shadow1 {
-  -webkit-box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.05);
-  -o-box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.05);
-  box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.05);
-}
-
-.default-box-shadow2 {
-  -webkit-box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
-  -o-box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
-  box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.07);
-}
-
-.default-box-shadow3 {
-  -webkit-box-shadow: 0px 0px 50px rgba(24, 26, 32, 0.07);
-  -o-box-shadow: 0px 0px 50px rgba(24, 26, 32, 0.07);
-  box-shadow: 0px 0px 50px rgba(24, 26, 32, 0.07);
-}
-
-.default-box-shadow4 {
-  -webkit-box-shadow: 0px 10px 35px rgba(5, 16, 54, 0.1);
-  -o-box-shadow: 0px 10px 35px rgba(5, 16, 54, 0.1);
-  box-shadow: 0px 10px 35px rgba(5, 16, 54, 0.1);
-}
-
-.default-box-shadow5 {
-  -webkit-box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.05);
-  -o-box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.05);
-  box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.05);
 }
 
 @media (max-width: 767.98px) {
@@ -10704,4 +10490,8 @@ input:focus-visible {
 .slick-dots li button::before {
   top: -50px !important;
   font-size: 14px !important;
+}
+
+.table_header {
+  border: none !important;
 }

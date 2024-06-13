@@ -1,15 +1,20 @@
 "use client";
 
 import MainMenu from "@/components/common/MainMenu";
-import SidebarPanel from "@/components/common/sidebar-panel";
+// import SidebarPanel from "@/components/common/sidebar-panel";
 import LoginSignupModal from "@/components/common/login-signup-modal";
+import useUser from "@/hooks/useUser";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { Dropdown } from "react-bootstrap";
+import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
-  const [navbar, setNavbar] = useState(false);
+  const { user, error, loading } = useUser();
 
+  const [navbar, setNavbar] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
@@ -24,7 +29,9 @@ const Header = () => {
       window.removeEventListener("scroll", changeBackground);
     };
   }, []);
-
+  const logOut = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <>
       <header
@@ -67,91 +74,66 @@ const Header = () => {
               {/* End .col-auto */}
 
               <div className="col-auto">
-                <div className="d-flex align-items-center">
-                  <a
-                    href="#"
-                    className="login-info d-flex align-items-cente"
-                    data-bs-toggle="modal"
-                    data-bs-target="#loginSignupModal"
-                    role="button"
+                {user?.data?.name ? (
+                  <Dropdown>
+                    <Dropdown.Toggle variant="#fff" id="dropdown-basic">
+                      <CgProfile
+                        style={{
+                          width: "30px",
+                          height: "30px",
+                        }}
+                      />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item>
+                        <Link href="/profile">{user?.data?.name}</Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={logOut}>Log out</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                ) : (
+                  <div
+                    className="d-flex align-items-center"
+                    onClick={() => setIsModalOpen(true)}
                   >
-                    <i
-                      className="far fa-user-circle fz16 me-2"
+                    <a
+                      href="#"
+                      className="login-info d-flex align-items-cente ud-btn"
+                      role="button"
                       style={{
-                        color: "#00C194",
+                        color: "white",
+                        backgroundColor: "#00C194",
                       }}
-                    />{" "}
-                    <span className="d-none d-xl-block">Login / Register</span>
-                  </a>
-                  <a
-                    className="ud-btn add-property bdrs60 mx-2 mx-xl-4"
-                    href="/dashboard-home"
-                    style={{
-                      color: "white",
-                      backgroundColor: "#00C194",
-                    }}
-                  >
-                    Get started
-                    <i className="fal fa-arrow-right-long" />
-                  </a>
-                  {/* <a
-                    className="sidemenu-btn filter-btn-right"
-                    href="#"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#SidebarPanel"
-                    aria-controls="SidebarPanelLabel"
-                  >
-                    <Image
-                      width={25}
-                      height={9}
-                      className="img-1"
-                      src="/images/dark-nav-icon.svg"
-                      alt="humberger menu"
-                    />
-                    <Image
-                      width={25}
-                      height={9}
-                      className="img-2"
-                      src="/images/dark-nav-icon.svg"
-                      alt="humberger menu"
-                    />
-                  </a> */}
-                </div>
+                    >
+                      <i
+                        className="far fa-user-circle fz16 me-2"
+                        style={{
+                          color: "white",
+                        }}
+                      />{" "}
+                      <span className="d-none d-xl-block">
+                        Login / Register
+                      </span>
+                    </a>
+                  </div>
+                )}
               </div>
-              {/* End .col-auto */}
             </div>
-            {/* End .row */}
           </div>
         </nav>
       </header>
-      {/* End Header */}
 
-      {/* Signup Modal */}
       <div className="signup-modal">
-        <div
-          className="modal fade"
-          id="loginSignupModal"
-          tabIndex={-1}
-          aria-labelledby="loginSignupModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog  modal-dialog-scrollable modal-dialog-centered">
-            <LoginSignupModal />
+        <div className="modal fade">
+          <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <LoginSignupModal
+              setIsModalOpen={setIsModalOpen}
+              isModalOpen={isModalOpen}
+            />
           </div>
         </div>
       </div>
-      {/* End Signup Modal */}
-
-      {/* DesktopSidebarMenu */}
-      <div
-        className="offcanvas offcanvas-end"
-        tabIndex="-1"
-        id="SidebarPanel"
-        aria-labelledby="SidebarPanelLabel"
-      >
-        <SidebarPanel />
-      </div>
-      {/* Sidebar Panel End */}
     </>
   );
 };

@@ -661,3 +661,35 @@ td {
 .buy_propertys {
   font-family: "Poppins", sans-serif !important;
 }
+
+// investmen page
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: white;
+  margin-top: 1rem;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.flex-row:last-child {
+  border-bottom: none;
+}
+
+.flex-header {
+  font-weight: bold;
+  background-color: #f8f9fa;
+}
+
+.flex-cell {
+  flex: 1;
+  text-align: left;
+  margin-top: 7px;
+}

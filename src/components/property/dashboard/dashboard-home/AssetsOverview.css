@@ -1,0 +1,91 @@
+/* AssetsOverview.css */
+
+.assets-overview {
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .overview-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 25px;
+    border-radius: 5px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 48%;
+  }
+  
+  .card p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .card h2 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  .btn-primary {
+    background-color: #00A47E;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .ml-auto {
+    margin-left: auto;
+  }
+  
+  .info-text {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .action-button {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .property-card {
+    display: flex;
+    gap: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .property_right_info {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .overview-cards {
+      flex-direction: column;
+    }
+  
+    .card {
+      max-width: 100%;
+    }
+  
+    .property-card {
+      flex-direction: column;
+    }
+  }
+  
+  

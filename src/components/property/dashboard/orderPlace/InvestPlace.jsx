@@ -1,8 +1,12 @@
-import Image from "next/image";
+"use client";
 import React from "react";
 import BankInfo from "./BankInfo";
+import useInvest from "@/hooks/useInvest";
+import ProofOfPayment from "./ProofOfPayment";
 
 const OrderPlace = () => {
+  const { investData, error, loading } = useInvest();
+
   return (
     <>
       <div
@@ -10,7 +14,7 @@ const OrderPlace = () => {
           width: "604px",
         }}
       >
-        <h2 className="text-center">Your Order Has Been Placed!</h2>
+        <h2 className="text-center">Your Invest Has Been Placed!</h2>
         <div
           style={{
             backgroundColor: "#E8F6F6",
@@ -22,14 +26,14 @@ const OrderPlace = () => {
             style={{ borderBottom: "1px solid black", paddingBottom: "7px" }}
             className="text-center"
           >
-            Order Info
+            Invest Info
           </h4>
           <p
             style={{
               fontSize: "15px",
             }}
           >
-            Order ID
+            Invest ID
           </p>
           <p
             style={{
@@ -38,7 +42,7 @@ const OrderPlace = () => {
               fontWeight: "bold",
             }}
           >
-            SRKN-1473144484-240421134446205
+            #{investData?._id?.slice(-5)}
           </p>
           <div className="d-flex justify-content-between">
             <div>
@@ -47,7 +51,7 @@ const OrderPlace = () => {
                   fontSize: "14px",
                 }}
               >
-                Property Name
+                Project Title{" "}
               </p>
               <p
                 style={{
@@ -55,7 +59,7 @@ const OrderPlace = () => {
                   fontWeight: "bold",
                 }}
               >
-                Villa Talun
+                {investData?.projectInfo?.projectTitle}
               </p>
               <p
                 style={{
@@ -70,55 +74,10 @@ const OrderPlace = () => {
                   fontWeight: "bold",
                 }}
               >
-                Dhanmondi, Dhaka
+                {investData?.projectInfo?.projectAddress}
               </p>
             </div>
             <div>
-              <p
-                style={{
-                  fontSize: "14px",
-                }}
-              >
-                Total Token
-              </p>
-              <p
-                style={{
-                  color: "#018566",
-                  fontWeight: "bold",
-                }}
-              >
-                10 tokens
-              </p>
-              <p
-                style={{
-                  fontSize: "14px",
-                }}
-              >
-                Token Price
-              </p>
-              <p
-                style={{
-                  color: "#018566",
-                  fontWeight: "bold",
-                }}
-              >
-                BDT 10,000
-              </p>
-              <p
-                style={{
-                  fontSize: "14px",
-                }}
-              >
-                Bank Transfer Fee (5%)
-              </p>
-              <p
-                style={{
-                  color: "#018566",
-                  fontWeight: "bold",
-                }}
-              >
-                BDT 500
-              </p>
               <div
                 style={{
                   backgroundColor: "white",
@@ -140,7 +99,7 @@ const OrderPlace = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  BDT 10,500
+                  BDT {investData?.totalInvestAmount?.toLocaleString()}
                 </p>
               </div>
             </div>
@@ -158,9 +117,7 @@ const OrderPlace = () => {
             }}
           >
             <li>All relevant transaction fees shall be carry by customers.</li>
-            <li>
-              The tokens may up to 3 Business days to credited to your account.
-            </li>
+
             <li>
               Your dedicated Public Relation Assistance (PR) will contact you
               with in 1 working days.
@@ -168,6 +125,8 @@ const OrderPlace = () => {
           </ul>
         </div>
       </div>
+      {/* Proof of Payment */}
+      <ProofOfPayment investData={investData} />
       {/* Bank Info */}
       <BankInfo />
     </>
