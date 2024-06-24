@@ -1,49 +1,47 @@
-'use client'
-import React, { useState, useEffect } from 'react';
-import './Page.css'; // Import CSS file for styling
+"use client";
+import React, { useState, useEffect } from "react";
 
 const Page = () => {
   const [todo, setTodo] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [todoPerPage] = useState(10);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos/')
-      .then(response => response.json())
-      .then(data => setTodo(data))
-      .catch(error => console.error('Error fetching data:', error));
+    fetch("https://jsonplaceholder.typicode.com/todos/")
+      .then((response) => response.json())
+      .then((data) => setTodo(data))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   const indexOfLastTodo = currentPage * todoPerPage;
   const indexOfFirstTodo = indexOfLastTodo - todoPerPage;
-  const filteredTodo = todo.filter(todo =>
+  const filteredTodo = todo.filter((todo) =>
     todo.title.toLowerCase().startsWith(searchTerm.toLowerCase())
   );
   const currentTodo = filteredTodo.slice(indexOfFirstTodo, indexOfLastTodo);
 
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const handleSearchChange = event => {
+  const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
     setCurrentPage(1);
   };
 
   return (
     <div className="container">
-     
       <div className="data-grid">
         <h1>Todo List</h1>
-        <table className='table'>
+        <table className="table">
           <thead>
-        <div className="filter">
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={handleSearchChange}
-          placeholder="Search..."
-        />
-        </div>
+            <div className="filter">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                placeholder="Search..."
+              />
+            </div>
             <tr>
               <th>UserId</th>
               <th>Id</th>
@@ -52,12 +50,12 @@ const Page = () => {
             </tr>
           </thead>
           <tbody>
-            {currentTodo.map(todo => (
+            {currentTodo.map((todo) => (
               <tr key={todo.id}>
                 <td>{todo.userId}</td>
                 <td>{todo.id}</td>
                 <td>{todo.title}</td>
-                <td>{todo.completed ? 'Yes' : 'No'}</td>
+                <td>{todo.completed ? "Yes" : "No"}</td>
               </tr>
             ))}
           </tbody>
@@ -75,7 +73,12 @@ const Page = () => {
   );
 };
 
-const Pagination = ({ todoPerPage: todoPerPage, totalTodo: totalTodo, currentPage, paginate }) => {
+const Pagination = ({
+  todoPerPage: todoPerPage,
+  totalTodo: totalTodo,
+  currentPage,
+  paginate,
+}) => {
   const totalPages = Math.ceil(totalTodo / todoPerPage);
   const maxPagesToShow = 5; //.......................................................... Maximum number of page numbers to show
 
@@ -111,7 +114,7 @@ const Pagination = ({ todoPerPage: todoPerPage, totalTodo: totalTodo, currentPag
 
   return (
     <nav>
-      <ul className='pagination'>
+      <ul className="pagination">
         <li className="page-item">
           <button onClick={handleFirstPage} className="page-link">
             First
@@ -122,9 +125,12 @@ const Pagination = ({ todoPerPage: todoPerPage, totalTodo: totalTodo, currentPag
             Previous
           </button>
         </li>
-        {generatePageNumbers().map(number => (
-          <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
-            <button onClick={() => paginate(number)} className='page-link'>
+        {generatePageNumbers().map((number) => (
+          <li
+            key={number}
+            className={`page-item ${currentPage === number ? "active" : ""}`}
+          >
+            <button onClick={() => paginate(number)} className="page-link">
               {number}
             </button>
           </li>
