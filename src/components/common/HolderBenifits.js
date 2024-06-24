@@ -29,7 +29,7 @@ const HolderBenifits = () => {
             <Image
               width={500}
               height={231}
-              src="/images/home/holder-benifits-left.png"
+              src="/images/home/Image 11.png"
               alt="trusted"
             />
           </div>
@@ -38,7 +38,7 @@ const HolderBenifits = () => {
           <Image
             width={568}
             height={434}
-            src="/images/home/holder-benifis-right.png"
+            src="/images/home/Image 12.png"
             alt="trusted"
           />
         </div>
