@@ -69,7 +69,10 @@ const SignUp = ({ setSignIn }) => {
       password: userInfo?.password,
     };
     try {
-      await axios.post("http://localhost:5000/api/v1/users/signup", userData);
+      await axios.post(
+        "https://investment-server-a1qr.onrender.com/api/v1/users/signup",
+        userData
+      );
       // router.push("/login");
       toast.success("Succefully Account Created");
       setSignIn(true);

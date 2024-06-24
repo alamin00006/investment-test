@@ -50,7 +50,7 @@ const SignIn = ({ setIsModalOpen, setSignIn }) => {
     };
     try {
       const data = await axios.post(
-        "http://localhost:5000/api/v1/users/login",
+        "https://investment-server-a1qr.onrender.com/api/v1/users/login",
         userData
       );
 
