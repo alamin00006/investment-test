@@ -77,19 +77,16 @@ const SingleV1 = async ({ params }) => {
                   }}
                 >
                   <div className="row p-2">
-                    <meter
-                      value={15000000}
-                      max={projectData?.totalProjectValue}
-                    />
+                    <meter value={0} max={projectData?.totalProjectValue} />
 
                     <div className="col-lg-4">
-                      <span className="fs-5 text-thm">10%</span>
+                      <span className="fs-5 text-thm">0%</span>
                     </div>
                     <div className="col-lg-8 text-end">
                       {" "}
                       <span>
                         {projectData?.totalProjectValue?.toLocaleString()}/
-                        {projectData?.totalProjectValue - 15000000} left
+                        {projectData?.totalProjectValue?.toLocaleString()} left
                       </span>
                     </div>
                   </div>
