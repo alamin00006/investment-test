@@ -105,7 +105,7 @@ const Home_V1 = async () => {
             </div>
             <div className="col-lg-3">
               <div className="text-start text-lg-end mb-3">
-                <Link className="ud-btn2" href="/grid-full-3-col">
+                <Link className="ud-btn2" href="/marketplace">
                   See All Projects
                   <i className="fal fa-arrow-right-long" />
                 </Link>

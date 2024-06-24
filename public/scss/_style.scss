@@ -6679,11 +6679,13 @@ textarea:focus {
 .btn-white,
 .btn-white2 {
   background-color: #ffffff;
+  color: black !important;
   border: 1px solid var(--headings-color);
 }
 .btn-white:hover,
 .btn-white2:hover {
   border: 1px solid #00c194;
+  color: white !important;
 }
 
 .btn-white2:before {

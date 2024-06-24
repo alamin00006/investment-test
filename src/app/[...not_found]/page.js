@@ -1,6 +1,7 @@
 import DefaultHeader from "@/components/common/DefaultHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
+import Header from "@/components/home/home-v1/Header";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -13,7 +14,7 @@ const NotFound = () => {
   return (
     <>
       {/* Main Header Nav */}
-      <DefaultHeader />
+      <Header />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}

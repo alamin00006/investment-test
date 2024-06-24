@@ -1,19 +1,20 @@
-import DefaultHeader from "@/components/common/DefaultHeader";
-
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
+import Header from "@/components/home/home-v1/Header";
 import MarketBanner from "@/components/home/home-v1/MarketBanner";
 import ProperteyFiltering from "@/components/listing/PropertyFiltering";
+import { getData } from "@/serverAPI/Property";
 
 export const metadata = {
   title: "Gird Full 3 Column || Homez - Real Estate NextJS Template",
 };
 
-const Market = () => {
+const Market = async () => {
+  const projecAllData = await getData();
   return (
     <>
       {/* Main Header Nav */}
-      <DefaultHeader />
+      <Header />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -22,14 +23,19 @@ const Market = () => {
 
       {/* Breadcumb Sections */}
 
-      <div className="my-3">
+      <div
+        className="mb-3"
+        style={{
+          marginTop: "100px",
+        }}
+      >
         <MarketBanner />
       </div>
 
       {/* End Breadcumb Sections */}
 
       {/* Property Filtering */}
-      <ProperteyFiltering />
+      <ProperteyFiltering projecAllData={projecAllData} />
 
       {/* Start Our Footer */}
       <section className="footer-style1 pt60 pb-0">

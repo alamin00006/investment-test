@@ -1,7 +1,6 @@
-import DashboardHeader from "@/components/common/DashboardHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
-import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
+import Header from "@/components/home/home-v1/Header";
 import InvestmentSummary from "@/components/property/dashboard/Investment/InvestmentSummary";
 import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
 import { serverBaseUrl } from "@/serverAPI/BaseUrl";
@@ -19,7 +18,7 @@ const DashboardInvestment = async ({ params }) => {
 
   return (
     <div className="dashboard_investement">
-      <DashboardHeader />
+      <Header />
       <MobileMenu />
 
       <div className="dashboard pr30 pr0-xl container">
@@ -27,10 +26,6 @@ const DashboardInvestment = async ({ params }) => {
 
         <div className=" pt-5 px-2 mt-5">
           <div className="row pb40">
-            <div className="col-lg-12">
-              <DboardMobileNavigation />
-            </div>
-
             <div className="col-lg-12 ">
               <InvestmentSummary projectData={projectData} />
             </div>

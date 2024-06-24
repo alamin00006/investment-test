@@ -1,4 +1,3 @@
-import DefaultHeader from "@/components/common/DefaultHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 
@@ -13,7 +12,7 @@ import { serverBaseUrl } from "@/serverAPI/BaseUrl";
 import FeaturedListings from "@/components/home/home-v1/FeatuerdListings";
 import { getData } from "@/serverAPI/Property";
 import DetailsRightSide from "@/components/property/property-single-style/common/DetailsRightSide";
-import DashboardHeader from "@/components/common/DashboardHeader";
+import Header from "@/components/home/home-v1/Header";
 
 export const metadata = {
   title: "Property Single V1 || Homez - Real Estate NextJS Template",
@@ -31,7 +30,7 @@ const SingleV1 = async ({ params }) => {
   return (
     <>
       {/* Main Header Nav */}
-      <DashboardHeader />
+      <Header />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -44,10 +43,7 @@ const SingleV1 = async ({ params }) => {
           {/* End .row */}
 
           <div className="row mb30 mt30">
-            <PropertyGallery
-              id={params.id}
-              photos={projectData?.projectPicture}
-            />
+            <PropertyGallery id={params.id} projectData={projectData} />
           </div>
           {/* End .row */}
 
@@ -81,16 +77,19 @@ const SingleV1 = async ({ params }) => {
                   }}
                 >
                   <div className="row p-2">
-                    <meter value={50000} max={projectData?.totalProjectValue} />
+                    <meter
+                      value={15000000}
+                      max={projectData?.totalProjectValue}
+                    />
 
                     <div className="col-lg-4">
-                      <span className="fs-5 text-thm">50%</span>
+                      <span className="fs-5 text-thm">10%</span>
                     </div>
                     <div className="col-lg-8 text-end">
                       {" "}
                       <span>
-                        {projectData?.totalProjectValue?.toLocaleString()}
-                        /10000 Amount left
+                        {projectData?.totalProjectValue?.toLocaleString()}/
+                        {projectData?.totalProjectValue - 15000000} left
                       </span>
                     </div>
                   </div>

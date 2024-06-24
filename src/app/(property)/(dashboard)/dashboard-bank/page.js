@@ -1,12 +1,9 @@
-import DashboardHeader from "@/components/common/DashboardHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
-import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
+import Header from "@/components/home/home-v1/Header";
 
 import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
 import BankAccount from "@/components/property/dashboard/bank-account/BankAccount";
-
-import WithdrawHistory from "@/components/property/dashboard/withdraw/WithdrawHistory";
 
 export const metadata = {
   title: "Dashboard Home || Homez - Real Estate NextJS Template",
@@ -15,7 +12,7 @@ export const metadata = {
 const DashboardBank = () => {
   return (
     <div className="bank_account_page">
-      <DashboardHeader />
+      <Header />
       <MobileMenu />
 
       <div className="dashboard pr30 pr0-xl container">
@@ -23,10 +20,6 @@ const DashboardBank = () => {
 
         <div className="dashboard__content mt-5">
           <div className="row pb40">
-            <div className="col-lg-12">
-              <DboardMobileNavigation />
-            </div>
-
             <div className="col-lg-12 ">
               <BankAccount />
             </div>

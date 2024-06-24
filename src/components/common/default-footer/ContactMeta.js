@@ -15,7 +15,7 @@ const ContactMeta = () => {
   ];
 
   return (
-    <div className="row mb-4 mb-lg-5">
+    <div className="row mb-4 mb-lg-5 mt-4">
       {contactInfoList.map((contact, index) => (
         <div className="col-auto" key={index}>
           <div className="contact-info">

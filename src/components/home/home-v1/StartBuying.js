@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const StartBuying = () => {
@@ -17,20 +18,22 @@ const StartBuying = () => {
             fontSize: "36px",
           }}
         >
-          Ready to start buying Property?
+          Are you ready to invest now ?
         </h2>
-        <p>We only work with the best companies around the globe to survey</p>
-        <button
-          style={{
-            borderRadius: "12px",
-            border: "1px solid #00C194",
-            background: " #00C194",
-            color: "white",
-            padding: "5px 20px",
-          }}
-        >
-          Buy Properties
-        </button>
+        <p>We only work with the best Investors</p>
+        <Link href="/marketplace">
+          <button
+            style={{
+              borderRadius: "12px",
+              border: "1px solid #00C194",
+              background: " #00C194",
+              color: "white",
+              padding: "5px 20px",
+            }}
+          >
+            Explore here
+          </button>
+        </Link>
       </div>
       <div
         style={{

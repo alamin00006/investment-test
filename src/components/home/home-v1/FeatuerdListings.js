@@ -62,7 +62,7 @@ const FeaturedListings = ({ data }) => {
                   <Image
                     width={382}
                     height={248}
-                    src={`https://investment-server-a1qr.onrender.com/${project?.projectPicture[0]}`}
+                    src={`${project?.projectPicture[0]}`}
                     alt="Project Picture"
                   />
                 </div>
@@ -74,33 +74,33 @@ const FeaturedListings = ({ data }) => {
                     </Link>
                   </h6>
                   <p className="list-text">{project.address}</p>
-                  <div className="list-meta d-flex align-items-center">
+                  {/* <div className="list-meta d-flex align-items-center">
                     <a href="#">
-                      {/* <span className="mr-2">
-                        <HiOutlineBuildingOffice2 />
-                      </span> */}
+                    
                       10 Floor
                     </a>
                     <a href="#">
-                      {/* <span className="flaticon-bed" /> */}
+                   
                       {project?.totalBedRoom} bed
                     </a>
                     <a href="#">
-                      {/* <span className="flaticon-shower" />{" "} */}
+                 
                       {project?.totalBathRooms} bath
                     </a>
                     <a href="#">
-                      {/* <span className="flaticon-expand" />{" "} */}
+                   
                       {project?.proertySize} sqft
                     </a>
-                  </div>
+                  </div> */}
                   <div className="d-flex justify-content-between mt-2 ">
                     <div className="d-flex justify-items-center gap-2">
                       <p
                         className="fw-bold"
                         style={{ fontSize: "15px", color: "#00C194" }}
                       >
-                        13% IRR
+                        {project?.yearlyReturnValueMinimum +
+                          project?.projectAnnualCapitalAppreciation}
+                        % IRR
                       </p>
                       <div>
                         <Image
@@ -117,7 +117,7 @@ const FeaturedListings = ({ data }) => {
                         className="fw-bold"
                         style={{ fontSize: "15px", color: "#00C194" }}
                       >
-                        11% ERY
+                        {project?.yearlyReturnValueMinimum}% ERY
                       </p>
                       <div>
                         <Image
@@ -157,7 +157,7 @@ const FeaturedListings = ({ data }) => {
                       className="fw-bold"
                       style={{ fontSize: "15px", color: "#00C194" }}
                     >
-                      4 Points left
+                      4 Units left
                     </p>
                   </div>
 

@@ -16,11 +16,10 @@ const Footer = () => {
             <div className="footer-widget mb-4 mb-lg-5">
               <Link className="footer-logo" href="/">
                 <Image
-                  width={138}
+                  width={246}
                   height={44}
-                  className="mb40"
-                  src="/images/header-logo.svg"
-                  alt=""
+                  src="/images/home/Sharikana-logo.png"
+                  alt="Header Logo"
                 />
               </Link>
               <ContactMeta />

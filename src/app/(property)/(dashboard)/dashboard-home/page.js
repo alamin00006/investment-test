@@ -1,7 +1,7 @@
-import DashboardHeader from "@/components/common/DashboardHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
-import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
+import Header from "@/components/home/home-v1/Header";
+
 import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
 import AssetsOverview from "@/components/property/dashboard/dashboard-home/AssetsOverview";
 
@@ -12,7 +12,7 @@ export const metadata = {
 const DashboardHome = () => {
   return (
     <div className="assets_overview">
-      <DashboardHeader />
+      <Header />
       <MobileMenu />
 
       <div className="dashboard pr30 pr0-xl container">
@@ -20,10 +20,6 @@ const DashboardHome = () => {
 
         <div className="dashboard__content mt-5">
           <div className="row pb40">
-            <div className="col-lg-12">
-              <DboardMobileNavigation />
-            </div>
-
             <div className="col-lg-12">
               <div className="dashboard_title_area">
                 <p

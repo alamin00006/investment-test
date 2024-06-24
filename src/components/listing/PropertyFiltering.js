@@ -1,14 +1,13 @@
 "use client";
 import listings from "@/data/listings";
 import React, { useState, useEffect } from "react";
-// import ListingSidebar from "../../sidebar";
 import AdvanceFilterModal from "@/components/common/advance-filter-two";
 import TopFilterBar from "./TopFilterBar";
 
 import PaginationTwo from "./PaginationTwo";
-import MarketListing from "../home/home-v1/MarketListing";
+import FeaturedListings from "../home/home-v1/FeatuerdListings";
 
-const ProperteyFiltering = () => {
+const ProperteyFiltering = ({ projecAllData }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [currentSortingOption, setCurrentSortingOption] = useState("Newest");
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
@@ -267,7 +266,7 @@ const ProperteyFiltering = () => {
         </div>
         {/* End TopFilterBar */}
         <div className="row">
-          <MarketListing />
+          <FeaturedListings data={projecAllData?.data} />
         </div>
         {/* End .row */}
         <div className="row">

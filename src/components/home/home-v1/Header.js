@@ -6,13 +6,14 @@ import LoginSignupModal from "@/components/common/login-signup-modal";
 import useUser from "@/hooks/useUser";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
   const { user, error, loading } = useUser();
-
+  const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const changeBackground = () => {
@@ -31,6 +32,8 @@ const Header = () => {
   }, []);
   const logOut = () => {
     localStorage.removeItem("token");
+    router.push("/");
+    // window.location.reload();
   };
   return (
     <>

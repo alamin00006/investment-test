@@ -1,20 +1,21 @@
-import DashboardHeader from "@/components/common/DashboardHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
+import Header from "@/components/home/home-v1/Header";
 import MarketBanner from "@/components/home/home-v1/MarketBanner";
 import ProperteyFiltering from "@/components/listing/PropertyFiltering";
-import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
 
 import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
+import { getData } from "@/serverAPI/Property";
 
 export const metadata = {
   title: "Dashboard Home || Homez - Real Estate NextJS Template",
 };
 
-const BuyProperty = () => {
+const BuyProperty = async () => {
+  const projecAllData = await getData();
   return (
     <div className="buy_propertys">
-      <DashboardHeader />
+      <Header />
       <MobileMenu />
 
       <div className="dashboard pr30 pr0-xl container">
@@ -22,10 +23,6 @@ const BuyProperty = () => {
 
         <div className="dashboard__content mt-5">
           <div className="row pb40">
-            <div className="col-lg-12">
-              <DboardMobileNavigation />
-            </div>
-
             <div className="col-lg-12 ">
               <div className="my-3">
                 <MarketBanner />
@@ -34,7 +31,7 @@ const BuyProperty = () => {
               {/* End Breadcumb Sections */}
 
               {/* Property Filtering */}
-              <ProperteyFiltering />
+              <ProperteyFiltering projecAllData={projecAllData} />
             </div>
           </div>
         </div>

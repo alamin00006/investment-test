@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ReturnTotal from "./ReturnTotal";
 import TotalInvestment from "./TotalInvestment";
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 const InvestmentSummary = ({ projectData }) => {
   const returnTypes = ["Half-yearly", "Yearly"];
@@ -52,8 +53,7 @@ const InvestmentSummary = ({ projectData }) => {
             <p>Vila Name - unit 2</p>
             <p>Dhanmondi, Dhaka</p>
             <Image
-              // src={`/images/listings/propertyImage1.png`}
-              src={`https://investment-server-a1qr.onrender.com/${projectData?.projectPicture[0]}`}
+              src={projectData?.projectPicture[0]}
               width={300}
               height={150}
               style={{
@@ -64,24 +64,59 @@ const InvestmentSummary = ({ projectData }) => {
           </div>
           {/* Investment Amount */}
           <div className="mt-2">
-            <label>
+            <label className="fw-bold">
               Investment Amount (minimum {projectData?.minimumInvestmentValue}{" "}
               BDT)
             </label>
             <br />
+            <div className="mt-3 d-flex gap-2 justify-content-center">
+              <button
+                style={{
+                  borderRadius: "5px",
+                  border: "1px solid #00a47e",
 
-            <input
-              style={{
-                width: "100%",
-                height: "45px",
-                borderRadius: "5px",
-                marginTop: "10px",
-              }}
-              type="text"
-              placeholder="Investment Amount"
-              onChange={(e) => setInvestmentAmount(Number(e.target.value))}
-              defaultValue={projectData?.minimumInvestmentValue}
-            />
+                  height: "40px",
+                  width: "50px",
+                }}
+                onClick={() =>
+                  setInvestmentAmount(
+                    investMentAmount - projectData?.minimumInvestmentValue
+                  )
+                }
+                disabled={
+                  investMentAmount === projectData?.minimumInvestmentValue
+                    ? true
+                    : false
+                }
+              >
+                <FaMinus />
+              </button>
+              <p
+                style={{
+                  borderRadius: "5px",
+                  border: "1px solid #00a47e",
+                  padding: "10px 5px",
+                  height: "40px",
+                }}
+              >
+                {investMentAmount?.toLocaleString()}
+              </p>
+              <button
+                style={{
+                  borderRadius: "5px",
+                  border: "1px solid #00a47e",
+                  height: "40px",
+                  width: "50px",
+                }}
+                onClick={() =>
+                  setInvestmentAmount(
+                    investMentAmount + projectData?.minimumInvestmentValue
+                  )
+                }
+              >
+                <FaPlus />
+              </button>
+            </div>
           </div>
           <div className="mt-2">
             <label>Investment Duration</label>

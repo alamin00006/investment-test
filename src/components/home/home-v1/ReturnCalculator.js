@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Slider from "react-rangeslider";
 const ReturnCalculator = ({ data }) => {
@@ -32,20 +33,20 @@ const ReturnCalculator = ({ data }) => {
       let profitAmount = 0;
       if (returnTypeValue === 0) {
         profitAmount =
-          (initialAmount * selectedProject?.halfYearlyRetunrValueMinimum) / 100;
+          (initialAmount * selectedProject?.halfYearlyRetunrValueMaximum) / 100;
       } else {
         profitAmount =
-          (initialAmount * selectedProject?.yearlyReturnValueMinimum) / 100;
+          (initialAmount * selectedProject?.yearlyReturnValueMaximum) / 100;
       }
       setProfitAmount(profitAmount * returnRangeValue);
     } else {
       let profitAmount = 0;
       if (returnTypeValue === 0) {
         profitAmount =
-          (initialAmount * data?.[0]?.halfYearlyRetunrValueMinimum) / 100;
+          (initialAmount * data?.[0]?.halfYearlyRetunrValueMaximum) / 100;
       } else {
         profitAmount =
-          (initialAmount * data?.[0]?.yearlyReturnValueMinimum) / 100;
+          (initialAmount * data?.[0]?.yearlyReturnValueMaximum) / 100;
       }
       setProfitAmount(profitAmount * returnRangeValue);
     }
@@ -222,7 +223,7 @@ const ReturnCalculator = ({ data }) => {
                   </div>
                 </div>
               </div>
-              <div className="">
+              <div>
                 <p
                   className="fw-bold"
                   style={{
@@ -375,15 +376,22 @@ const ReturnCalculator = ({ data }) => {
             }}
             className="d-flex justify-content-center py-2 "
           >
-            <button
-              style={{
-                border: "none",
-                backgroundColor: "transparent",
-                color: "white",
-              }}
+            <Link
+              href={`/single-v1/${
+                selectedProject?._id ? selectedProject?._id : data[0]?._id
+              }`}
             >
-              Buy Properties
-            </button>
+              <button
+                style={{
+                  border: "none",
+                  backgroundColor: "transparent",
+                  color: "white",
+                  fontSize: "20px",
+                }}
+              >
+                Invest here
+              </button>
+            </Link>
           </div>
         </div>
       </div>

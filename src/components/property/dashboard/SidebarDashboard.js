@@ -31,30 +31,19 @@ const SidebarDashboard = () => {
           ),
           text: "Assets Overview",
         },
-        {
-          href: "/buy-property",
-          icon: (
-            <AiOutlineHome
-              style={{
-                width: "24px",
-                height: "24px",
-              }}
-            />
-          ),
-          text: "Buy Properties",
-        },
-        {
-          href: "/dashboard-referal",
-          icon: (
-            <IoShareSocialOutline
-              style={{
-                width: "24px",
-                height: "24px",
-              }}
-            />
-          ),
-          text: "Referrals",
-        },
+        // {
+        //   href: "/buy-property",
+        //   icon: (
+        //     <AiOutlineHome
+        //       style={{
+        //         width: "24px",
+        //         height: "24px",
+        //       }}
+        //     />
+        //   ),
+        //   text: "Buy Properties",
+        // },
+
         {
           href: "/dashboard-transaction",
           icon: (
@@ -104,6 +93,19 @@ const SidebarDashboard = () => {
             />
           ),
           text: "Bank Account",
+        },
+
+        {
+          href: "/dashboard-referal",
+          icon: (
+            <IoShareSocialOutline
+              style={{
+                width: "24px",
+                height: "24px",
+              }}
+            />
+          ),
+          text: "Referrals",
         },
         {
           href: "/profile",
