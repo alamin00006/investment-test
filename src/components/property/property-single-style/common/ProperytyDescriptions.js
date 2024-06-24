@@ -95,7 +95,7 @@ const ProperytyDescriptions = ({ projectData }) => {
               role="tabpanel"
               aria-labelledby="nav-item1-tab"
             >
-              <h6>About the Property</h6>
+              <h6>About the Project</h6>
 
               <p className="text">
                 This property is set on 1,500 sqm of land and offers 1,000 sqm
@@ -234,15 +234,10 @@ const ProperytyDescriptions = ({ projectData }) => {
                 demand, which will continue to grow along with the number of
                 tourists that visit the island.
               </p>
-              <h6>About Ubud:</h6>
+              <h6>About Area:</h6>
               <p>
-                The Ubud property market in Bali, has been an attractive
-                destination for property investment for many years. Ubud is
-                known for its stunning natural beauty, rich cultural heritage,
-                and serene environment, which has drawn both local and
-                international tourists to the area. Ubud has experienced a
-                steady demand for properties due to its popularity among
-                tourists, artists, and those seeking a tranquil lifestyle
+                The project market in Mirpur, has been an attractive destination
+                for property investment for many years.
               </p>
             </div>
             <div
