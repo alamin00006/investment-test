@@ -1,7 +1,6 @@
-import DefaultHeader from "@/components/common/DefaultHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
-import Agents from "@/components/pages/about/Agents";
+import Header from "@/components/home/home-v1/Header";
 import Features from "@/components/pages/about/Features";
 import FunFact from "@/components/pages/about/FunFact";
 import Mission from "@/components/pages/about/Mission";
@@ -16,7 +15,7 @@ const About = () => {
   return (
     <>
       {/* Main Header Nav */}
-      <DefaultHeader />
+      <Header />
       {/* End Main Header Nav */}
 
       {/* Mobile Nav  */}
@@ -107,37 +106,6 @@ const About = () => {
         </div>
       </section>
       {/* End Funfact */}
-
-      {/* Exclusive Agents */}
-      <section className="pb90">
-        <div className="container">
-          <div className="row  justify-content-center">
-            <div className="col-auto">
-              <div
-                className="main-title"
-                data-aos="fade-up"
-                data-aos-delay="100"
-              >
-                <h2 className="title">Our Exclusive Agetns</h2>
-                <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
-                </p>
-              </div>
-            </div>
-            {/* End header */}
-          </div>
-          {/* End .row */}
-
-          <div className="row">
-            <div className="col-lg-12" data-aos="fade-up" data-aos-delay="300">
-              <div className="property-city-slider">
-                <Agents />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Exclusive Agents */}
 
       {/* Abut intro */}
       <section className="pt30 pb-0">

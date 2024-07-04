@@ -1,4 +1,5 @@
-import DefaultHeader from "@/components/common/DefaultHeader";
+import CallToActions from "@/components/common/CallToActions";
+import DefaultHeader from "@/components/common/navigarion-bar/DefaultHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import ComapareTable from "@/components/pages/compare/ComapareTable";
@@ -53,6 +54,10 @@ const Compare = () => {
         </div>
       </section>
       {/* Our Compare Area */}
+
+      {/* Our CTA */}
+      <CallToActions />
+      {/* Our CTA */}
 
       {/* Start Our Footer */}
       <section className="footer-style1 pt60 pb-0">

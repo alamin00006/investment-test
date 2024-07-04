@@ -1,3 +1,4 @@
+import { serverBaseUrl } from "@/serverAPI/BaseUrl";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -5,14 +6,12 @@ const UseFetch = (path) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  console.log(error);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(
-          `https://investment-server-om2a.onrender.com/api/${path}`
-        );
+        const res = await axios.get(`${serverBaseUrl}/api/${path}`);
         setData(res.data);
       } catch (err) {
         setError(err);
@@ -25,9 +24,7 @@ const UseFetch = (path) => {
   const reFetch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(
-        `https://investment-server-om2a.onrender.com/api/${path}`
-      );
+      const res = await axios.get(`${serverBaseUrl}/api/${path}`);
       setData(res.data);
     } catch (err) {
       setError(err);

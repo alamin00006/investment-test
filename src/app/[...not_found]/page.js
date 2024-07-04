@@ -1,4 +1,4 @@
-import DefaultHeader from "@/components/common/DefaultHeader";
+import DefaultHeader from "@/components/common/navigarion-bar/DefaultHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
 import Header from "@/components/home/home-v1/Header";

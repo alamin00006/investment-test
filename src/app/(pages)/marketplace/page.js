@@ -1,8 +1,8 @@
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
+import FeaturedListings from "@/components/home/home-v1/FeatuerdListings";
 import Header from "@/components/home/home-v1/Header";
 import MarketBanner from "@/components/home/home-v1/MarketBanner";
-import ProperteyFiltering from "@/components/listing/PropertyFiltering";
 import { getData } from "@/serverAPI/Property";
 
 export const metadata = {
@@ -21,8 +21,6 @@ const Market = async () => {
       <MobileMenu />
       {/* End Mobile Nav  */}
 
-      {/* Breadcumb Sections */}
-
       <div
         className="mb-3"
         style={{
@@ -32,10 +30,12 @@ const Market = async () => {
         <MarketBanner />
       </div>
 
-      {/* End Breadcumb Sections */}
-
       {/* Property Filtering */}
-      <ProperteyFiltering projecAllData={projecAllData} />
+      <div className="container">
+        <div className="row ">
+          <FeaturedListings data={projecAllData?.data} />
+        </div>
+      </div>
 
       {/* Start Our Footer */}
       <section className="footer-style1 pt60 pb-0">

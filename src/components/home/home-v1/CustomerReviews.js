@@ -1,6 +1,6 @@
 "use client";
 import apartmentType from "@/data/apartmentType";
-import Link from "next/link";
+
 import React from "react";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -52,9 +52,10 @@ const CustomerReviews = () => {
             className="item"
             style={{
               padding: "20px",
+              color: "black",
             }}
           >
-            <div className="">
+            <div>
               <h6>Great Work</h6>
               <Image
                 width={12}
@@ -62,7 +63,11 @@ const CustomerReviews = () => {
                 src="/images/home/commaIcon.png"
                 alt="Pic"
               />
-              <p>
+              <p
+                style={{
+                  color: "black",
+                }}
+              >
                 Amazing design, easy to customize and a design quality
                 superlative account on its cloud platform for the optimized
                 performance. And we didn’t on our original designs.
@@ -80,20 +85,19 @@ const CustomerReviews = () => {
                   <Image
                     width={60}
                     height={60}
-                    src="/images/home/review-avator.png"
+                    src="/images/home/avatar.png"
                     alt="Pic"
                   />
                 </div>
-                <div>
-                  <p>Leslie Alexander</p>
-                  <p
-                    style={{
-                      lineHeight: 0,
-                    }}
-                  >
-                    Nintendo
-                  </p>
-                </div>
+
+                <p
+                  style={{
+                    color: "black",
+                    marginTop: "12px",
+                  }}
+                >
+                  Mohammad Shakil
+                </p>
               </div>
             </div>
           </div>

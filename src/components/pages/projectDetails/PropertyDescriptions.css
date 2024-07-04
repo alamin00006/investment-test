@@ -1,0 +1,148 @@
+.timeline {
+  padding-left: 20px; /* Adjust as needed */
+}
+
+  
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px; /* Adjust spacing between timeline items */
+}
+
+.bullet-line {
+  position: absolute;
+  left: 4px; /* Adjust distance from left */
+  top: 0;
+  bottom: 0;
+  width: 2px; /* Adjust thickness of vertical line */
+  background-color: #068f66; /* Adjust color of vertical line */
+  z-index: 0;
+}
+
+.circle {
+  width: 11px;
+  height: 12px;
+  background-color: #1ca370; /* Adjust color of circle */
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+  
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: -3px;
+}
+
+.calendar-container {
+  display: flex;
+  align-items: flex-start; /* Align items at the top */
+  position: relative; /* Ensure relative positioning for proper stacking */
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+}
+  
+  .bi-calendar {
+    margin-right: 10px; /* Adjust space between calendar icon and date */
+  }
+  
+  
+  
+  .month {
+    font-size: 18px;
+    margin-bottom: -20px;
+  }
+  
+  .day {
+    font-size: 24px; /* Adjust font size of day */
+    font-weight: bold;
+    margin-bottom: 0; /* Remove margin bottom for day */
+  }
+  
+  .title {
+    font-size: 18px; /* Adjust font size of title */
+    font-weight: bold;
+    margin-bottom: 10px; /* Adjust space between title and details */
+  }
+  
+  .details {
+    font-size: 14px; /* Adjust font size of details */
+    color: #555; /* Adjust color of details text */
+  }
+  
+  .year {
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+    margin-left: -40px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+  .timeline-text {
+    margin-left: 30px; /* Adjust space between date and text */
+  }
+  
+  
+  
+  .details {
+    font-size: 14px; /* Adjust font size of details */
+    color: #555; /* Adjust color of details text */
+  }
+  .calendar-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+    border: -2px solid #ccc;
+    border-radius: 0px;
+    padding: -3px;
+}
+  
+.date {
+  flex: 16 28 auto;
+  padding: -9px;
+  text-align: center;
+  background-color: #c8f3f571;
+  color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 53px;
+}
+
+  
+.month {
+  font-size: 18px;
+  margin-bottom: -20px;
+}
+  .day {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .event-details {
+    flex: 1 1 auto;
+    padding-left: 20px;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .details {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Adjust as needed */
+  }
+  

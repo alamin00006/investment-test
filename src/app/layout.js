@@ -1,5 +1,5 @@
 "use client";
-import ScrollToTop from "@/components/common/ScrollTop";
+import ScrollToTop from "@/components/common/scroll/ScrollTop";
 import Aos from "aos";
 import "./global.css";
 import "../../node_modules/react-modal-video/scss/modal-video.scss";

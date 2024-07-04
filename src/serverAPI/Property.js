@@ -2,9 +2,7 @@ import { serverBaseUrl } from "./BaseUrl";
 
 export const getData = async () => {
   const res = await fetch(`${serverBaseUrl}/project`, {
-    next: {
-      revalidate: 2,
-    },
+    cache: "no-store",
   });
 
   if (!res.ok) {

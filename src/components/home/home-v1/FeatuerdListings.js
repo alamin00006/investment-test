@@ -69,7 +69,7 @@ const FeaturedListings = ({ data }) => {
 
                 <div className="list-content">
                   <h6 className="list-title fw-bold">
-                    <Link href={`/single-v1/${project._id}`}>
+                    <Link href={`/project-details/${project._id}`}>
                       {project.projectTitle}
                     </Link>
                   </h6>
@@ -133,7 +133,7 @@ const FeaturedListings = ({ data }) => {
                   <div
                     className="slider"
                     style={{
-                      marginTop: "-20px",
+                      marginTop: "-25px",
                     }}
                   >
                     <Slider
@@ -145,7 +145,12 @@ const FeaturedListings = ({ data }) => {
                       onChangeComplete={handleChangeComplete}
                     />
                   </div>
-                  <div className="d-flex justify-content-between  ">
+                  <div
+                    className="d-flex justify-content-between  "
+                    style={{
+                      marginTop: "-10px",
+                    }}
+                  >
                     <p
                       className="fw-bold"
                       style={{ fontSize: "15px", color: "#00C194" }}
@@ -161,7 +166,7 @@ const FeaturedListings = ({ data }) => {
                     </p>
                   </div>
 
-                  <Link href={`/single-v1/${project._id}`}>
+                  <Link href={`/project-details/${project._id}`}>
                     <div
                       className="d-flex justify-content-center"
                       style={{
@@ -178,7 +183,7 @@ const FeaturedListings = ({ data }) => {
                           color: "white",
                         }}
                       >
-                        Buy Now
+                        Invest Here
                       </button>
                     </div>
                   </Link>

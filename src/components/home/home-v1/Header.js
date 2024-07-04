@@ -1,6 +1,6 @@
 "use client";
 
-import MainMenu from "@/components/common/MainMenu";
+import MainMenu from "@/components/common/navigarion-bar/MainMenu";
 // import SidebarPanel from "@/components/common/sidebar-panel";
 import LoginSignupModal from "@/components/common/login-signup-modal";
 import useUser from "@/hooks/useUser";

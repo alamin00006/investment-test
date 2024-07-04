@@ -377,7 +377,7 @@ const ReturnCalculator = ({ data }) => {
             className="d-flex justify-content-center py-2 "
           >
             <Link
-              href={`/single-v1/${
+              href={`/project-details/${
                 selectedProject?._id ? selectedProject?._id : data[0]?._id
               }`}
             >
